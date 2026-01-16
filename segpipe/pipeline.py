@@ -18,13 +18,16 @@ class segmentationPipeline:
             self.rightModelPath = weightPathOverrides[1]
         if weightPathOverrides[2] is not None:
             self.leftModelPath = weightPathOverrides[2]
-        self.LRModel = SwinUNETR(img_size=(128,128,128), in_channels=1, out_channels=3, feature_size=12)
+        # self.LRModel = SwinUNETR(img_size=(128,128,128), in_channels=1, out_channels=3, feature_size=12)
+        self.LRModel = SwinUNETR(in_channels=1, out_channels=3, feature_size=12)
         self.LRModel.load_state_dict(torch.load(self.LRModelPath,map_location=device))
         self.LRModel.eval()
-        self.rightModel = SwinUNETR(img_size=(128,128,128), in_channels=1, out_channels=4, feature_size=24)
+        # self.rightModel = SwinUNETR(img_size=(128,128,128), in_channels=1, out_channels=4, feature_size=24)
+        self.rightModel = SwinUNETR(in_channels=1, out_channels=4, feature_size=24)
         self.rightModel.load_state_dict(torch.load(self.rightModelPath,map_location=device))
         self.rightModel.eval()
-        self.leftModel = SwinUNETR(img_size=(128,128,128), in_channels=1, out_channels=3, feature_size=24)
+        # self.leftModel = SwinUNETR(img_size=(128,128,128), in_channels=1, out_channels=3, feature_size=24)
+        self.leftModel = SwinUNETR(in_channels=1, out_channels=3, feature_size=24)
         self.leftModel.load_state_dict(torch.load(self.leftModelPath,map_location=device))
         self.leftModel.eval()
         self.device = device
