@@ -1,4 +1,4 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: segpipe
 Version: 1.0
 Summary: Description of your project
@@ -13,8 +13,13 @@ Provides-Extra: full
 Requires-Dist: opencv-python; extra == "full"
 Provides-Extra: headless
 Requires-Dist: opencv-python-headless; extra == "headless"
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: summary
 
-# Lung Segmentation Pipeline
+# TriSwinUNETR
 
 This Python module provides a simple-to-use interface for lung segmentation tasks using deep learning. Specifically, this module includes a class `segmentationPipeline` that allows for the segmentation of lung lobes and left-right lung separation.
 
@@ -70,7 +75,7 @@ pipeline = segmentationPipeline(device, weight_paths)
 
 ### Running the segmentation
 
-You can segment an image (as a PyTorch tensor or a Numpy array) of shape (N,C,H,W,D), N and C optional,  by calling the `segment` method:
+You can segment an image (as a PyTorch tensor or a Numpy array) of shape (N,C,H,W,D), N and C optional, by calling the `segment` method:
 The model assumes the image is already oriented Inferior-Superior, Anterior-Posterior, Right-Left, scaled to 0 to 1 where 0 is air and 1 is water density.
 ```python
 input_image = torch.rand((1, 1,512, 512, 512))  # Replace with your own image tensor
