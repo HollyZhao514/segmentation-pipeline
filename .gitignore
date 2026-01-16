@@ -5,3 +5,4 @@ dest
 source
 *image_seg*
 build/*
+Connected_components_PyTorch/*
